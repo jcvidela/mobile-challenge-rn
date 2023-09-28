@@ -6,7 +6,7 @@ const Home = () => {
     const Tab = createBottomTabNavigator();
 
     return (
-        <Tab.Navigator initialRouteName="Actividad">
+        <Tab.Navigator>
             <Tab.Screen name="Inicio" component={DashboardScreen} />
             <Tab.Screen name="Tarjeta" component={CardScreen} />
             <Tab.Screen name="Actividad" component={ActivityScreen} />
