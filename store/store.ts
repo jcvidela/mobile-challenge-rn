@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import AuthSlice from '../features/auth/AuthSlice';
 import NavigationSlice from '../features/navigation/NavigationSlice';
 import ServicesSlice from '../features/services/ServicesSlice';
+import UserSlice from '../features/user/UserSlice';
 
 export interface AuthStore {
     isLoggedIn: boolean;
@@ -12,6 +13,8 @@ export interface UserStore {
     iat: number;
     name: string;
     lastName: string;
+    balance: number;
+    showBalance: boolean;
 }
 
 export interface Movement {
@@ -33,7 +36,11 @@ export interface MovementsStore {
 }
 
 export interface AppStore {
-    auth: AuthStore
+    auth: AuthStore,
+    user: UserStore,
+    services: ServicesStore,
+    navigation: NavigationStore,
+    movements: MovementsStore,
 }
 
 export const store = configureStore({
@@ -41,6 +48,7 @@ export const store = configureStore({
       auth: AuthSlice,
       services: ServicesSlice,
       navigation: NavigationSlice,
+      user: UserSlice
   },
 })
 
