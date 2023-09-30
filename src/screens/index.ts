@@ -5,3 +5,4 @@ export { default as ActivityScreen } from './ActivityScreen';
 export { default as HomeScreen } from './HomeScreen';
 export { default as ProfileScreen } from './ProfileScreen';
 export { default as CardScreen } from './CardScreen';
+export { default as MovementsScreen } from './MovementsScreen';

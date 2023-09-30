@@ -13,6 +13,9 @@ import JWT from 'expo-jwt';
 import AuthService from '../../services/AuthService';
 import { setIsLoggedIn } from '../../../features/auth/AuthSlice';
 import { setUserData } from '../../../features/user/UserSlice';
+import { setAvailableNavigation } from '../../../features/navigation/NavigationSlice';
+import { setAvailableServices } from '../../../features/services/ServicesSlice';
+
 
 const key = 'nubikey';
 
@@ -20,6 +23,7 @@ const AuthScreen = () => {
     const dispatch = useDispatch();
 
   async function onSubmit() {
+    // await AsyncStorage.removeItem('token');
     try {
       const token = await AuthService.authenticateUser();
       const userData = JWT.decode(token.JWT, key);
@@ -27,6 +31,8 @@ const AuthScreen = () => {
 
       dispatch(setIsLoggedIn(true));
       dispatch(setUserData(userData as any));
+      dispatch(setAvailableServices(userData.services as any));
+      dispatch(setAvailableNavigation(userData.navigation as any));
 
     } catch (error) {
       console.error('Authentication Error:', error.message);

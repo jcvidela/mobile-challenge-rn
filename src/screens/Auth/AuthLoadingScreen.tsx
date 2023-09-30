@@ -11,17 +11,20 @@ const AuthLoadingScreen = () => {
     const navigation = useNavigation();
     let isMounted = React.useRef(true);
 
-    React.useEffect(() => {
+    React.useEffect(async () => {
         if (isMounted.current) {
+            await AsyncStorage.removeItem('token')
             AsyncStorage.getItem('token').then((x) => {
                 if (x) {
+                    console.log(x);
                     dispatch(setIsLoggedIn(true));
+                } else {
+                    navigation.navigate('Auth');
                 }
-                navigation.navigate('Auth');
             });
         }
         
-        return () => isMounted.current = false;;
+        return () => isMounted.current = false;
     }, []);
     
     return <Text>Loading...</Text>
