@@ -4,12 +4,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { store, AppStore } from './store/store'
 import { useSelector, Provider } from 'react-redux'
 
+import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
 import { AuthScreen, AuthLoadingScreen, HomeScreen } from './src/screens';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#423df6',
+    secondary: '#00d6e4',
+    white: '#000000'
+  },
+};
 
 const AppWrapper = () => {
   return (
     <Provider store={store}>
-      <App />
+      <PaperProvider theme={theme}>
+        <App />
+      </PaperProvider>
     </Provider>
   )
 }
