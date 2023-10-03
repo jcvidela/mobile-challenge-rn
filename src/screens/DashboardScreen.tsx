@@ -5,10 +5,6 @@ import ServicesCard from '../components/ServicesCard';
 import { AppStore } from '../../store/store';
 
 const DashboardScreen = () => {
-    const state = useSelector((state: AppStore) => state.services);
-
-    console.log(state);
-
     return (
         <View style={style.container}>
             <MainCard />

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
@@ -5,17 +6,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBalance, setShowBalance } from '../../features/user/UserSlice';
 import { AppStore } from '../../store/store';
+import { formatARS } from '../helpers';
 
 const MainCard = () => {
   const dispatch = useDispatch();
-
-  function formatARS(amount: number) {
-    return amount.toLocaleString('es-ar', {
-      style: 'currency',
-      currency: 'ARS',
-      minimumFractionDigits: 2
-    });
-  }
+  const navigation = useNavigation();
 
   const { balance, showBalance } = useSelector((state: AppStore) => state.user);
   
@@ -34,8 +29,8 @@ const MainCard = () => {
     </Card.Content>
 
     <Card.Actions>
-      <Button onPress={() => dispatch(setBalance(balance + 1))}>Cargá plata</Button>
-      <Button onPress={() => dispatch(setBalance(balance - 1))}>Retirá plata</Button>
+      <Button onPress={() => navigation.navigate('UpdateBalance')}>Cargá plata</Button>
+      <Button onPress={() => navigation.navigate('UpdateBalance')}>Retirá plata</Button>
     </Card.Actions>
   </Card>
   )

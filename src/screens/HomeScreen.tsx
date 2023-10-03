@@ -1,13 +1,22 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ActivityScreen, DashboardScreen, CardScreen, ProfileScreen, MovementsScreen} from './';
+import { createStackNavigator } from '@react-navigation/stack';
+import { UpdateBalanceScreen, DashboardScreen, CardScreen, ProfileScreen, MovementsScreen} from './';
+
+const Tab = createBottomTabNavigator();
+    const Stack = createStackNavigator();
+
+    const DashboardStack = () => (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Dashboard" component={DashboardScreen} />
+          <Stack.Screen name="UpdateBalance" component={UpdateBalanceScreen} />
+        </Stack.Navigator>
+      );
 
 
 const Home = () => {
-    const Tab = createBottomTabNavigator();
-
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Inicio" component={DashboardScreen} />
+        <Tab.Navigator initialRouteName="Nubi">
+            <Tab.Screen name="Inicio" component={DashboardStack} />
             <Tab.Screen name="Tarjeta" component={CardScreen} />
             <Tab.Screen name="Actividad" component={MovementsScreen} />
             <Tab.Screen name="Perfil" component={ProfileScreen} />
