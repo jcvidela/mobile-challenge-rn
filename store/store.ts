@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import AuthSlice from '../features/auth/AuthSlice';
+import MovementsSlice from '../features/movements/MovementsSlice';
 import NavigationSlice from '../features/navigation/NavigationSlice';
 import ServicesSlice from '../features/services/ServicesSlice';
 import UserSlice from '../features/user/UserSlice';
@@ -48,7 +49,8 @@ export const store = configureStore({
       auth: AuthSlice,
       services: ServicesSlice,
       navigation: NavigationSlice,
-      user: UserSlice
+      user: UserSlice,
+      movements: MovementsSlice,
   },
 })
 
