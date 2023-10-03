@@ -1,8 +1,6 @@
 import {View, StyleSheet} from 'react-native'
-import { useSelector } from 'react-redux';
 import MainCard from '../components/MainCard';
 import ServicesCard from '../components/ServicesCard';
-import { AppStore } from '../../store/store';
 
 const DashboardScreen = () => {
     return (

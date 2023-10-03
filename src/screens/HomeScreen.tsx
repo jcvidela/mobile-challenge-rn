@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 const Home = () => {
     return (
-        <Tab.Navigator initialRouteName="Nubi">
+        <Tab.Navigator>
             <Tab.Screen name="Inicio" component={DashboardStack} />
             <Tab.Screen name="Tarjeta" component={CardScreen} />
             <Tab.Screen name="Actividad" component={MovementsScreen} />

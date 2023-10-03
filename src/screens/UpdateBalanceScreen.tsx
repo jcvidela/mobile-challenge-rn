@@ -1,13 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
-import { Keyboard } from "react-native";
-import { View, StyleSheet, TextInput, TouchableOpacity, Text, } from "react-native";
-import { Card } from "react-native-paper";
-import { setBalance } from "../../features/user/UserSlice";
-import {DismissKeyboardView} from '../components/DismissKeyboard';
 import * as React from 'react';
+import { View, StyleSheet, TextInput, TouchableOpacity, Text, Keyboard } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { AppStore } from "../../store/store";
+import { Card } from "react-native-paper";
+
+import { DismissKeyboardView } from '../components/DismissKeyboard';
+
+import { useNavigation } from "@react-navigation/native";
+import { setBalance } from "../../features/user/UserSlice";
 import { setAddMovement } from "../../features/movements/MovementsSlice";
+import { AppStore } from "../../store/store";
 import { getFormattedDate } from "../helpers";
 
 
@@ -26,8 +27,9 @@ const UpdateBalanceScreen = () => {
             "date": getFormattedDate(Date.now()),
             "title": description || ''
          }))
-        setAddToBalance(undefined); // reset value
-        setDescription(undefined); // reset value
+
+        setAddToBalance(undefined);
+        setDescription(undefined);
         Keyboard.dismiss();
         navigation.goBack();
     }
@@ -46,7 +48,7 @@ const UpdateBalanceScreen = () => {
             <View style={style.container}>
                 <Card.Content>
                     <DismissKeyboardView>
-                            <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                            <View style={style.keyboardContent}>
                                 <Text style={style.balanceText}>$</Text>
                                 <TextInput
                                     value={addToBalance}
@@ -65,17 +67,8 @@ const UpdateBalanceScreen = () => {
                         onChangeText={onDescriptionChange}
                     />
 
-                <TouchableOpacity style={{
-                    backgroundColor: '#423df6',
-                    width: 300,
-                    height: 50,
-                    borderRadius: 10,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: 300
-                }}>
-                    <Text style={{ fontSize: 25, color: 'white' }} onPress={onPressNext}>Continuar</Text>
+                <TouchableOpacity style={style.continueBtn}>
+                    <Text style={style.continueBtnText} onPress={onPressNext}>Continuar</Text>
                 </TouchableOpacity>
         </View>
         </>
@@ -96,6 +89,11 @@ const UpdateBalanceScreen = () => {
           alignItems: 'center',
           marginTop: 60,
         },
+        keyboardContent: {
+            display: 'flex', 
+            flexDirection: 'row', 
+            justifyContent: 'center'
+        },
         centerText: {
           textAlign: 'center',
         },
@@ -104,6 +102,20 @@ const UpdateBalanceScreen = () => {
         },
         descriptionText: {
             fontSize: 30,
+        },
+        continueBtn: {
+            backgroundColor: '#423df6',
+                    width: 300,
+                    height: 50,
+                    borderRadius: 10,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: 300
+        },
+        continueBtnText: {
+            fontSize: 25, 
+            color: 'white'
         }
       })
     

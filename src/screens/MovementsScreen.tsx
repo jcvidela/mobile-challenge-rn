@@ -11,7 +11,7 @@ const FlatListBasics = () => {
         data={movements}
         renderItem={({item}) => (
             <View>
-                <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <View style={styles.containerView}>
                     <Text style={styles.item}>{item.title}</Text>
                     <Text style={styles.item}>{item.amount}</Text>
                 </View>
@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       paddingTop: 22,
+    },
+    containerView: {
+      display: 'flex', 
+      flexDirection: 'row', 
+      justifyContent: 'space-between', 
+      alignItems: 'center'
     },
     item: {
       padding: 10,
