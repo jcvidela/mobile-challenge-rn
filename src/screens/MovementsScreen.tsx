@@ -1,22 +1,9 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { Title } from 'react-native-paper';
+import { AppStore } from '../../store/store';
+import { useSelector } from 'react-redux';
 
 const FlatListBasics = () => {
-  const movements = [{
-    amount:"+ $200",
-    date:"15 de abril",
-    title:"recibiste dinero"
- },
- {
-    amount:"+ $500",
-    date:"12 de abril",
-    title:"recibiste dinero"
- },
- {
-    amount:"+ $2500",
-    date:"1 de abril",
-    title:"beneficio nubiers"
- }];
+  const { movements } = useSelector((state: AppStore) => state.movements);
 
   return (
     <View style={styles.container}>
