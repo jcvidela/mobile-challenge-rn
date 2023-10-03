@@ -15,6 +15,8 @@ import { setIsLoggedIn } from '../../../features/auth/AuthSlice';
 import { setUserData } from '../../../features/user/UserSlice';
 import { setAvailableNavigation } from '../../../features/navigation/NavigationSlice';
 import { setAvailableServices } from '../../../features/services/ServicesSlice';
+import { setAddMovements } from '../../../features/movements/MovementsSlice';
+import { Movement } from '../../../store/store';
 
 
 const key = 'nubikey';
@@ -23,16 +25,22 @@ const AuthScreen = () => {
     const dispatch = useDispatch();
 
   async function onSubmit() {
-    // await AsyncStorage.removeItem('token');
     try {
       const token = await AuthService.authenticateUser();
-      const userData = JWT.decode(token.JWT, key);
+      let userData = JWT.decode(token.JWT, key);
       await AsyncStorage.setItem('token', token.JWT);
+
+      // corregimos el bug de la devolución del amount de la API
+      const cleanedMovements = userData.movements.map((movement) => ({
+        ...movement,
+        amount: movement['amount '].trim()
+      }));
 
       dispatch(setIsLoggedIn(true));
       dispatch(setUserData(userData as any));
       dispatch(setAvailableServices(userData.services as any));
       dispatch(setAvailableNavigation(userData.navigation as any));
+      dispatch(setAddMovements(cleanedMovements));
 
     } catch (error) {
       console.error('Authentication Error:', error.message);
