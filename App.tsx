@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { store, AppStore } from './store/store'
 import { useSelector, Provider } from 'react-redux'
@@ -20,16 +20,16 @@ const theme = {
 const AppWrapper = () => {
   return (
     <Provider store={store}>
-      <PaperProvider theme={theme}>
-        <App />
-      </PaperProvider>
+        <PaperProvider theme={theme}>
+          <App />
+        </PaperProvider>
     </Provider>
   )
 }
 
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createStackNavigator();
   const { isLoggedIn } = useSelector((state: AppStore) => state.auth);
 
   const OnboardingNavigator = () => {
