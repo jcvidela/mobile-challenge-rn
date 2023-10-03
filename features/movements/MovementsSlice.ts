@@ -1,22 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { MovementsStore } from '../../store/store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Movement, MovementsStore } from '../../store/store';
 
 const initialState: MovementsStore = {
     movements: [],
-  }
+  } as MovementsStore;
 
 export const Movements = createSlice({
-  name: 'navigation',
+  name: 'movements',
   initialState,
   reducers: {
-      setMovementsSlice: (state, action) => {
+      setAddMovements: (state, action) => {
         state.movements = action.payload;
+      },
+      setAddMovement: (state, action: PayloadAction<Movement>) => {
+        state.movements.push(action.payload);
       }
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { setMovementsSlice } = Movements.actions
+export const { setAddMovements, setAddMovement } = Movements.actions
 
 export default Movements.reducer
