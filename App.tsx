@@ -56,27 +56,6 @@ const App = () => {
       </NavigationContainer>
     </Provider>
   )
-
-  // return (
-  //   <NavigationContainer>
-  //     <Stack.Navigator initialRouteName="AuthLoading">
-  //       {/* <Stack.Screen name="LoadingAuthScreen" component={LoadingAuthScreen}/> */}
-  //       {isSignedIn ? (
-  //         <>
-  //           {/* App Navigator */}
-  //           <Stack.Screen name="Home" component={HomeScreen} />
-  //           <Stack.Screen name="Movements" component={ActivityScreen} />
-  //         </>
-  //       ) : (
-  //         <>
-  //           {/* Onboarding Navigator */}
-  //           <Stack.Screen name="AuthLoading" component={AuthLoadingScreen} />
-  //           <Stack.Screen name="Auth" component={AuthScreen} />
-  //         </>
-  //       )}
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
 }
 
 export default AppWrapper;
