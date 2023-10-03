@@ -9,11 +9,8 @@ import { useDispatch } from 'react-redux';
 const AuthLoadingScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    let isMounted = React.useRef(true);
 
-    React.useEffect(async () => {
-        if (isMounted.current) {
-            await AsyncStorage.removeItem('token')
+    React.useEffect(() => {
             AsyncStorage.getItem('token').then((x) => {
                 if (x) {
                     console.log(x);
@@ -22,9 +19,6 @@ const AuthLoadingScreen = () => {
                     navigation.navigate('Auth');
                 }
             });
-        }
-        
-        return () => isMounted.current = false;
     }, []);
     
     return <Text>Loading...</Text>
