@@ -13,7 +13,6 @@ const AuthLoadingScreen = () => {
     React.useEffect(() => {
             AsyncStorage.getItem('token').then((x) => {
                 if (x) {
-                    console.log(x);
                     dispatch(setIsLoggedIn(true));
                 } else {
                     navigation.navigate('Auth');
