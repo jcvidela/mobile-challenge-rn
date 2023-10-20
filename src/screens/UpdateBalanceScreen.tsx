@@ -111,7 +111,7 @@ const UpdateBalanceScreen = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginTop: 300
+                    marginTop: 150
         },
         continueBtnText: {
             fontSize: 25, 
