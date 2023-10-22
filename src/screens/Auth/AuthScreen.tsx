@@ -65,7 +65,7 @@ const AuthScreen = () => {
           <TouchableOpacity
             style={[styles.sendButton, {opacity: 0.6}]}
             onPress={onSubmit}>
-            <Text style={{fontSize: 20}}>Login</Text>
+            <Text style={styles.btnText}>Login</Text>
           </TouchableOpacity>
         </View>
       
@@ -90,6 +90,9 @@ const styles = StyleSheet.create({
   },
   containerButton: {
     alignSelf: 'stretch',
+  },
+  btnText: {
+    fontSize: 20
   },
   sendButton: {
     height: 48,

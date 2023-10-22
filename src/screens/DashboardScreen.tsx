@@ -6,7 +6,7 @@ const DashboardScreen: React.FC = () => {
   return (
     <View style={style.container}>
       <MainCard />
-      <View style={{ marginVertical: 15 }} />
+      <View style={style.separator} />
       <ServicesCard />
     </View>
   );
@@ -18,6 +18,9 @@ const style = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
   },
+  separator: {
+    marginVertical: 15
+  }
 });
 
 export default DashboardScreen;

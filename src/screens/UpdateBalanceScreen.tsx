@@ -52,9 +52,7 @@ const UpdateBalanceScreen = () => {
 
   return (
     <>
-      <Text style={{ fontSize: 25, marginTop: 10, marginLeft: 10 }}>
-        ¿Cuánto querés ingresar?
-      </Text>
+      <Text style={style.title}>¿Cuánto querés ingresar?</Text>
       <View style={style.container}>
         <Card.Content>
           <DismissKeyboardView>
@@ -93,6 +91,11 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 500,
+  },
+  title: {
+    fontSize: 25,
+    marginTop: 10,
+    marginLeft: 10,
   },
   containerCard: {
     display: "flex",

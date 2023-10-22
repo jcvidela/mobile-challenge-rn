@@ -17,7 +17,7 @@ const ProfileScreen = () => {
     
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 25 }}>
+      <Text style={styles.title}>
         ¡Hola {name}er!
       </Text>
       <View style={styles.imageContainer}>
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
+  title: {
+    fontSize: 25
+  }
 });
 
 export default ProfileScreen;
