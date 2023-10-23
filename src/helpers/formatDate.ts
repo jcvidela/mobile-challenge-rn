@@ -1,12 +1,4 @@
-export function formatARS(amount: number) {
-    return amount.toLocaleString('es-ar', {
-      style: 'currency',
-      currency: 'ARS',
-      minimumFractionDigits: 2
-    });
-  }
-
-  export function getFormattedDate(timestamp: number) {
+export function formatDate(timestamp: number) {
     const date = new Date(timestamp);
   
     const dayOfMonth = date.getDate();
@@ -18,9 +10,3 @@ export function formatARS(amount: number) {
   
     return `${dayOfMonth} de ${monthName}`;
   }
-  
-  
-  
-  
-  
-  
