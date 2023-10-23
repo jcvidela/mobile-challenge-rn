@@ -1,3 +1,5 @@
+import ErrorBoundary from "react-native-error-boundary";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -53,13 +55,15 @@ const App = () => {
   };
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer>
-          {isLoggedIn ? <AppNavigator /> : <OnboardingNavigator />}
-        </NavigationContainer>
-      </PersistGate>
-    </Provider>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer>
+            {isLoggedIn ? <AppNavigator /> : <OnboardingNavigator />}
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+    </ErrorBoundary>
   );
 };
 
