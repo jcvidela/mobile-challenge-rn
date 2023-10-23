@@ -16,7 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import { setBalance } from "../../features/user/UserSlice";
 import { setAddMovement } from "../../features/movements/MovementsSlice";
 import { AppStore } from "../../store/store";
-import { getFormattedDate } from "../helpers";
+import { formatDate } from "../helpers/formatDate";
 
 const UpdateBalanceScreen = () => {
   const navigation = useNavigation();
@@ -31,7 +31,7 @@ const UpdateBalanceScreen = () => {
     dispatch(
       setAddMovement({
         amount: `+ $ ${String(addToBalance)}`,
-        date: getFormattedDate(Date.now()),
+        date: formatDate(Date.now()),
         title: description || "",
       })
     );

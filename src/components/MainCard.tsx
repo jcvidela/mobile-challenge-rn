@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { setShowBalance } from '../../features/user/UserSlice';
 import { AppStore } from '../../store/store';
-import { formatARS } from '../helpers';
+import { formatARS } from '../helpers/formatCurrency';
 
 const MainCard:React.FC = () => {
   const dispatch = useDispatch();
